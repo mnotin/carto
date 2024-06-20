@@ -29,7 +29,7 @@ sudo apt install -y postgresql
 sudo -u postgres createdb mercator
 
 # Configuration du mot de passe de l'utilisateur
-sudo -u postgres psql -c 'ALTER ROLE postgres PASSWORD 'postgres';'
+sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD 'postgres';"
 
 # Création d'un fichier .env à la racine du répertoire du projet
 cd /var/www/mercator
