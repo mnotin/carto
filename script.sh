@@ -13,7 +13,7 @@ sudo mkdir mercator
 sudo chown $USER:$GROUP mercator
 
 # Clonage du projet depuis GitHub
-git clone https://www.githu.com/dbarzin/mercator
+git clone https://www.github.com/dbarzin/mercator
 
 # Installation de paquets avec Composer :
 cd /var/www/mercator
