@@ -33,10 +33,10 @@ cd /var/www/mercator
 cp .env.example .env
 
 # Modification du fichier pour configurer les paramètres de connexion à la base de données
-sed 's/mysql/pgsql' .env
-sed 's/DB_PORT/#DB_PORT' .env
-sed 's/DB_USERNAME=mercator/DB_USERNAME=postgres' .env
-sed 's/DB_PASSWORD=s3cr3t/DB_PASSWORD=postgres' .env
+sed -i 's/mysql/pgsql' .env
+sed -i 's/DB_PORT/#DB_PORT' .env
+sed -i 's/DB_USERNAME=mercator/DB_USERNAME=postgres' .env
+sed -i 's/DB_PASSWORD=s3cr3t/DB_PASSWORD=postgres' .env
 
 # Execution de la migration
 php artisan migrate --seed
