@@ -51,4 +51,25 @@ php artisan key:generate
 php artisan config:clear
 
 # Lancement de l'application accessible depuis l'extérieur de la machine locale
-php artisan serve --host 0.0.0.0 --port 8000
+# php artisan serve --host 0.0.0.0 --port 8000
+
+# Configuration d'Apache
+sudo chown -R www-data:www-data /var/www/mercator
+sudo chmod -R 775 /var/www/mercator/storage
+
+echo "<VirtualHost *:80>
+    ServerName mercator.local
+    ServerAdmin admin@example.com
+    DocumentRoot /var/www/mercator/public
+    <Directory /var/www/mercator>
+        AllowOverride All
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>" > /etc/apache2/sites/mercator.conf
+
+sudo a2enmod rewrite
+sudo a2dissite 000-default.conf
+sudo a2ensite mercator.conf
+
+sudo systemctl restart apache2
