@@ -66,7 +66,7 @@ echo "<VirtualHost *:80>
     </Directory>
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>" > /etc/apache2/sites/mercator.conf
+</VirtualHost>" > /etc/apache2/available-sites/mercator.conf
 
 sudo a2enmod rewrite
 sudo a2dissite 000-default.conf
