@@ -57,7 +57,7 @@ php artisan config:clear
 sudo chown -R www-data:www-data /var/www/mercator
 sudo chmod -R 775 /var/www/mercator/storage
 
-echo "<VirtualHost *:80>
+sudo echo "<VirtualHost *:80>
     ServerName mercator.local
     ServerAdmin admin@example.com
     DocumentRoot /var/www/mercator/public
