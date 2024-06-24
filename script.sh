@@ -51,6 +51,7 @@ php artisan config:clear
 sudo chown -R www-data:www-data /var/www/mercator
 sudo chmod -R 775 /var/www/mercator/storage
 
+# Set up Apache
 echo "<VirtualHost *:80>
     ServerName mercator.local
     ServerAdmin admin@example.com
@@ -61,11 +62,11 @@ echo "<VirtualHost *:80>
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>" | sudo tee /etc/apache2/sites-available/mercator.conf
-
 sudo a2enmod rewrite
 sudo a2dissite 000-default.conf
 sudo a2ensite mercator.conf
 
+# Set up HTTPS
 sudo a2enmod ssl
 echo "<VirtualHost *:443>
     ServerName carto.local
