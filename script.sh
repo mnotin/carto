@@ -47,9 +47,6 @@ php artisan key:generate
 # Nettoyage du cache
 php artisan config:clear
 
-# Lancement de l'application accessible depuis l'extérieur de la machine locale
-# php artisan serve --host 0.0.0.0 --port 8000
-
 # Configuration d'Apache
 sudo chown -R www-data:www-data /var/www/mercator
 sudo chmod -R 775 /var/www/mercator/storage
