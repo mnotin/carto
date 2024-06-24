@@ -69,4 +69,22 @@ sudo a2enmod rewrite
 sudo a2dissite 000-default.conf
 sudo a2ensite mercator.conf
 
+sudo a2enmod ssl
+echo "<VirtualHost *:443>
+    ServerName carto.local
+    ServerAdmin
+    DocumentRoot /var/www/mercator/public
+    SSLEngine on
+    SSLProtocol all -SSLv2 -SSLv3
+    SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
+    SSLCertificateFile /etc/apache2/certs/certs/carto.XXXXX.crt
+    SSLCertificateKeyFile /etc/apache2/certs/private/private.key
+    <Directory /var/www/mercator/public>
+        AllowOverride All
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/mercator_error.log
+    CustomLog ${APACHE_LOG_DIR}/mercator_access.log combined
+</VirtualHost>" | sudo tee /etc/apache2/sites-available/mercator.conf
+sed -i 's/APP_ENV=local/APP_ENV=production/g' .env
+
 sudo systemctl restart apache2
