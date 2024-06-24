@@ -54,7 +54,7 @@ php artisan config:clear
 sudo chown -R www-data:www-data /var/www/mercator
 sudo chmod -R 775 /var/www/mercator/storage
 
-sudo echo "<VirtualHost *:80>
+echo "<VirtualHost *:80>
     ServerName mercator.local
     ServerAdmin admin@example.com
     DocumentRoot /var/www/mercator/public
@@ -63,7 +63,7 @@ sudo echo "<VirtualHost *:80>
     </Directory>
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>" > /etc/apache2/sites-available/mercator.conf
+</VirtualHost>" | sudo tee /etc/apache2/sites-available/mercator.conf
 
 sudo a2enmod rewrite
 sudo a2dissite 000-default.conf
