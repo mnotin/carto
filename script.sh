@@ -68,6 +68,7 @@ sudo a2ensite mercator.conf
 
 # Set up HTTPS
 sudo a2enmod ssl
+sudo make-ssl-cert --force-overwrite /usr/share/ssl-cert/ssleay.cnf /etc/ssl/private/mercator.crt
 echo "<VirtualHost *:443>
     ServerName mmercator.local
     ServerAdmin admin@example.com
@@ -75,8 +76,7 @@ echo "<VirtualHost *:443>
     SSLEngine on
     SSLProtocol all -SSLv2 -SSLv3
     SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
-    SSLCertificateFile /etc/apache2/certs/certs/carto.XXXXX.crt
-    SSLCertificateKeyFile /etc/apache2/certs/private/private.key
+    SSLCertificateFile /etc/ssl/private/mercator.crt
     <Directory /var/www/mercator/public>
         AllowOverride All
     </Directory>
