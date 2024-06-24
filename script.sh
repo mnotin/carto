@@ -83,6 +83,6 @@ echo "<VirtualHost *:443>
     ErrorLog ${APACHE_LOG_DIR}/mercator_error.log
     CustomLog ${APACHE_LOG_DIR}/mercator_access.log combined
 </VirtualHost>" | sudo tee -a /etc/apache2/sites-available/mercator.conf
-sed -i 's/APP_ENV=local/APP_ENV=production/g' .env
+sudo sed -i 's/APP_ENV=local/APP_ENV=production/g' .env
 
 sudo systemctl restart apache2
