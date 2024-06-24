@@ -72,7 +72,7 @@ sudo a2ensite mercator.conf
 sudo a2enmod ssl
 echo "<VirtualHost *:443>
     ServerName carto.local
-    ServerAdmin
+    ServerAdmin admin@example.com
     DocumentRoot /var/www/mercator/public
     SSLEngine on
     SSLProtocol all -SSLv2 -SSLv3
