@@ -70,7 +70,7 @@ sudo a2ensite mercator.conf
 sudo a2enmod ssl
 sudo make-ssl-cert --force-overwrite /usr/share/ssl-cert/ssleay.cnf /etc/ssl/private/mercator.crt
 echo "<VirtualHost *:443>
-    ServerName mmercator.local
+    ServerName mercator.local
     ServerAdmin admin@example.com
     DocumentRoot /var/www/mercator/public
     SSLEngine on
