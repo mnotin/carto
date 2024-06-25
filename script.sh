@@ -1,4 +1,4 @@
-# Mettre à jour le répartoire du gestionnaire de paquets :
+# Mettre à jour le répertoire du gestionnaire de paquets :
 sudo apt update && sudo apt full-upgrade
 
 # Installation de PHP et librairies PHP
