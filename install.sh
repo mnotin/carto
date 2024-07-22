@@ -28,7 +28,7 @@ sudo -u postgres createdb mercator
 # Configuration du mot de passe de l'utilisateur
 echo "Veuillez taper un mot de passe pour l'utilisateur de la base de données :"
 read bd_password
-sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD ${bd_password};"
+sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD '${bd_password}';"
 
 # Création d'un fichier .env à la racine du répertoire du projet
 cd /var/www/mercator
