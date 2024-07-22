@@ -1,5 +1,5 @@
 # Mettre à jour le répertoire du gestionnaire de paquets :
-sudo apt update && sudo apt full-upgrade
+sudo apt update && sudo apt full-upgrade -y
 
 # Installation de PHP et librairies PHP
 sudo apt install -y php-zip php-curl php-mbstring php-dom php-ldap php-soap php-xdebug php-mysql php-gd libapache2-mod-php php8.3-pgsql
