@@ -1,3 +1,8 @@
+# Attribue une adresse IP à la machine virtuelle
+interface=`ip link | grep "^2" | cut -d ' ' -f 2 | cut -d ':' -f 1`
+read -p "Veuillez taper l'adresse IP à attribuer à cette machine virtuelle : "
+ip addr add $ip_address dev $interface
+
 # Mettre à jour le répertoire du gestionnaire de paquets :
 sudo apt update && sudo apt full-upgrade -y
 
@@ -26,8 +31,7 @@ php artisan vendor:publish --all
 sudo -u postgres createdb mercator
 
 # Configuration du mot de passe de l'utilisateur
-echo "Veuillez taper un mot de passe pour l'utilisateur de la base de données :"
-read bd_password
+read -p "Veuillez taper un mot de passe pour l'utilisateur de la base de données :" bd_password
 sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD '${bd_password}';"
 
 # Création d'un fichier .env à la racine du répertoire du projet
