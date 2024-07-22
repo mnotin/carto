@@ -26,7 +26,9 @@ php artisan vendor:publish --all
 sudo -u postgres createdb mercator
 
 # Configuration du mot de passe de l'utilisateur
-sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD 'postgres';"
+echo "Veuillez taper un mot de passe pour l'utilisateur de la base de données :"
+read bd_password
+sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD ${bd_password};"
 
 # Création d'un fichier .env à la racine du répertoire du projet
 cd /var/www/mercator
@@ -36,7 +38,7 @@ cp .env.example .env
 sed -i 's/mysql/pgsql/g' .env
 sed -i 's/DB_PORT/#DB_PORT/g' .env
 sed -i 's/DB_USERNAME=mercator_user/DB_USERNAME=postgres/g' .env
-sed -i 's/DB_PASSWORD=s3cr3t/DB_PASSWORD=postgres/g' .env
+sed -i 's/DB_PASSWORD=s3cr3t/DB_PASSWORD=${bd_password}/g' .env
 
 # Execution de la migration
 php artisan migrate --seed
