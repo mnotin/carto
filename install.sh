@@ -1,6 +1,6 @@
 # Attribue une adresse IP à la machine virtuelle
 interface=`ip link | grep "^2" | cut -d ' ' -f 2 | cut -d ':' -f 1`
-read -p "Veuillez taper l'adresse IP à attribuer à cette machine virtuelle : "
+read -p "Veuillez taper l'adresse IP à attribuer à cette machine virtuelle : " ip_address
 ip addr add $ip_address dev $interface
 
 # Mettre à jour le répertoire du gestionnaire de paquets :
