@@ -1,7 +1,7 @@
-# Attribue une adresse IP à la machine virtuelle
-interface=`ip link | grep "^2" | cut -d ' ' -f 2 | cut -d ':' -f 1`
-read -p "Veuillez taper l'adresse IP à attribuer à cette machine virtuelle : " ip_address
-sudo ip addr add $ip_address/24 dev $interface
+read -p "Veuillez taper l'adresse du serveur NTP principal : " NTPAddr
+read -p "Veuillez taper l'adresse du serveur NTP secondaire" FallBackNTPAddr
+sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
+sed -i "s/#FallbackNTP/FallbackNTP=${FallbackNTPAddr}/g" /etc/systemd/timesyncd.conf
 
 # Mettre à jour le répertoire du gestionnaire de paquets :
 sudo apt update && sudo apt full-upgrade -y
