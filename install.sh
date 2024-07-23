@@ -1,7 +1,7 @@
 read -p "Veuillez taper l'adresse du serveur NTP principal : " NTPAddr
 read -p "Veuillez taper l'adresse du serveur NTP secondaire" FallBackNTPAddr
-sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
-sed -i "s/#FallbackNTP/FallbackNTP=${FallbackNTPAddr}/g" /etc/systemd/timesyncd.conf
+sudo sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
+sudo sed -i "s/#FallbackNTP/FallbackNTP=${FallbackNTPAddr}/g" /etc/systemd/timesyncd.conf
 
 # Mettre à jour le répertoire du gestionnaire de paquets :
 sudo apt update && sudo apt full-upgrade -y
