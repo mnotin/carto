@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Configuration de l'adresse IP des serveurs NTP
 read -p "Veuillez taper l'adresse du serveur NTP principal : " NTPAddr
 read -p "Veuillez taper l'adresse du serveur NTP secondaire : " FallBackNTPAddr
 sudo sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
