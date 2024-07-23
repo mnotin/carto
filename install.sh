@@ -34,8 +34,8 @@ sudo -u postgres createdb mercator
 
 # Configuration du mot de passe de l'utilisateur
 while : ; do
-    read -p "Veuillez taper un mot de passe pour l'utilisateur de la base de données :" bd_password
-    read -p "Veuillez taper à nouveau le mot de passe pour l'utilisateur de la base de données :" bd_password_check
+    read -p "Veuillez taper un mot de passe pour l'utilisateur de la base de données : " bd_password
+    read -p "Veuillez taper à nouveau le mot de passe pour l'utilisateur de la base de données : " bd_password_check
     [ "$bd_password" != "$bd_password_check" ] || break
 done
 sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD '${bd_password}';"
