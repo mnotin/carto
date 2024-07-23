@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read -p "Veuillez taper l'adresse du serveur NTP principal : " NTPAddr
 read -p "Veuillez taper l'adresse du serveur NTP secondaire" FallBackNTPAddr
 sudo sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
@@ -31,7 +33,11 @@ php artisan vendor:publish --all
 sudo -u postgres createdb mercator
 
 # Configuration du mot de passe de l'utilisateur
-read -p "Veuillez taper un mot de passe pour l'utilisateur de la base de données :" bd_password
+while : ; do
+    read -p "Veuillez taper un mot de passe pour l'utilisateur de la base de données :" bd_password
+    read -p "Veuillez taper à nouveau le mot de passe pour l'utilisateur de la base de données :" bd_password_check
+    [ "$bd_password" -ne "$bd_password_check" ] || break
+done
 sudo -u postgres psql -c "ALTER ROLE postgres PASSWORD '${bd_password}';"
 
 # Création d'un fichier .env à la racine du répertoire du projet
