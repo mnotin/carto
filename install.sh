@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -p "Veuillez taper l'adresse du serveur NTP principal : " NTPAddr
-read -p "Veuillez taper l'adresse du serveur NTP secondaire" FallBackNTPAddr
+read -p "Veuillez taper l'adresse du serveur NTP secondaire : " FallBackNTPAddr
 sudo sed -i "s/#NTP/NTP=${NTPAddr}/g" /etc/systemd/timesyncd.conf
 sudo sed -i "s/#FallbackNTP/FallbackNTP=${FallbackNTPAddr}/g" /etc/systemd/timesyncd.conf
 
