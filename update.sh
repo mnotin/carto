@@ -1,8 +1,7 @@
 #!/bin/sh
 
-mkdir -p backups_bd
-
 # Réalisation d'un backup de la base de données
+mkdir -p backups_bd
 date_var=`date "+%Y-%m-%d_%H-%M-%S"`
 sudo -u postgres pg_dump mercator > backups_bd/mercator_backup_$date_var.sql
 
