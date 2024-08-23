@@ -1,10 +1,13 @@
-cd /var/www/mercator
+#!/bin/sh
+
 mkdir -p backup
 
 # Réalisation d'un backup de la base de données
-pg_dump mercator > backup/mercator_backup.sql
+date_var=`date "+%Y-%m-%d_%H-%M-%S"`
+sudo -u postgres pg_dump mercator > backup/mercator_backup$date_var.sql
 
-# Récupèration des sources depuis Git
+# Récupération des sources depuis Git
+cd /var/www/mercator
 git pull
 
 # Migration de la base de données
