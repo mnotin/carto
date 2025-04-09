@@ -15,6 +15,12 @@ sudo apt install -y php-zip php-curl php-mbstring php-dom php-ldap php-soap php-
 # Installation de Apache2, GIT, Graphviz, Composer et PostgreSQL
 sudo apt install -y apache2 git graphviz composer postgresql
 
+# Installation de FNM, NPM et Node.js
+curl -fsSL https://fnm.vercel.app/install | bash
+node_verion=22
+echo "Installing Node.js ${node_version} LTS. Please update the installation script if this version is now out of date."
+fnm install $node_version
+
 # Création du répertoire du projet
 cd /var/www
 sudo mkdir mercator
@@ -26,6 +32,10 @@ git clone https://www.github.com/dbarzin/mercator
 # Installation de paquets avec Composer :
 cd /var/www/mercator
 composer update
+
+# Installation de paquets avec npm
+npm install
+npm run build
 
 # Publication de tous les assets publiables parmi les paquets "vendor"
 php artisan vendor:publish --all
