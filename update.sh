@@ -18,6 +18,8 @@ php artisan migrate
 
 # Mise à jour des librairies
 composer update
+npm install
+npm run build
 
 # Nettoyage des caches
 php artisan config:clear && php artisan view:clear
